@@ -10,23 +10,31 @@ import AlertComponenet from './components/AlertComponent/AlertComponent';
 import logo from './logo.svg';
 
 function App() {
+  const [title, updateTitle] = useState(null);
+  const [errorMessage, updateErrorMessage]  = useState(null);
   return (
+    <Router>
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header title = {title}/>
+        <div className = "container d-flex align-items-center justify-content-center flex-column">
+          <Switch>
+            <Route path = "/" exact = {true}>
+              <RegistrationForm showError = {updateErrorMessage} updateTitle = { updateTitle }/>
+            </Route>
+            <Route path = "/register">
+              <RegistrationForm showError = {updateErrorMessage} updateTitle = { updateTitle }/>
+            </Route>
+            <Route path = "/login">
+              <LoginForm showError = {updateErrorMessage} updateTitle = { updateTitle }/>
+            </Route>
+            <PrivateRoute path = "/home">
+              <Home/>
+            </PrivateRoute>
+          </Switch>
+          <AlertComponenet errorMessage = {errorMessage} hideError = {updateErrorMessage}/>
+        </div>
     </div>
+    </Router>
   );
 }
 
