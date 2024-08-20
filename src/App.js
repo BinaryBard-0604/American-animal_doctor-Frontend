@@ -1,7 +1,13 @@
 import React, {useState} from 'react';
 import './App.css';
+import Header from './components/Header/Header';
+import LoginForm from './components/LoginForm/LoginForm';
+import RegistrationForm from './components/RegistrationForm/RegistrationForm';
+import Home from './components/Home/Home';
+import PrivateRoute from './utils/PrivateRoute';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import AlertComponenet from './components/AlertComponent/AlertComponent';
 import logo from './logo.svg';
-import './App.css';
 
 function App() {
   return (
